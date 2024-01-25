@@ -10,7 +10,11 @@ def test_bfs_traversal():
     that all nodes are being traversed (ie. returns 
     the right number of nodes, in the right order, etc.)
     """
-    pass
+    gfile='./data/tiny_network.adjlist'
+    tiny_graph=graph.Graph(gfile)
+    test_var=tiny_graph.bfs("Michael Keiser")
+    assert len(test_var)==30
+    assert test_var[0]=="Michael Keiser"
 
 def test_bfs():
     """
@@ -23,4 +27,28 @@ def test_bfs():
     Include an additional test for nodes that are not connected 
     which should return None. 
     """
-    pass
+    gfile='./data/citation_network.adjlist'
+    citation_graph=graph.Graph(gfile)
+    test_var=citation_graph.bfs("Michael Keiser", "Lani Wu")
+    assert test_var==['Michael Keiser', '33232663', 'Bruce Conklin', '30814728', 'Lani Wu']
+
+def test_unconnected():
+    '''
+    This tests whether unconnected start and end nodes will return None.
+    '''
+    gfile='./data/citation_network.adjlist'
+    citation_graph=graph.Graph(gfile)
+    test_var=citation_graph.bfs("Lani Wu","Alexander (Sandy) Johnson")
+    assert test_var==None
+    
+def test_empty():
+    gfile='./data/empty.adjlist'
+    empty_graph=graph.Graph(gfile)
+    with pytest.raises(ValueError):
+        empty_graph.bfs("Lani Wu")
+
+def test_nonexist():
+    gfile='./data/tiny_network.adjlist'
+    empty_graph=graph.Graph(gfile)
+    with pytest.raises(ValueError):
+        empty_graph.bfs("Maple Chen")
