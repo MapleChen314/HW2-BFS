@@ -5,7 +5,7 @@ Breadth-first search
 # Assignment Overview
 The purpose of this assignment is to get you comfortable working with graph structures and to implement a breadth-first search function to traverse the graph and find the shortest path between nodes.
 
-## Breadth-First Search
+# Breadth-First Search
 This implementation of breadth-first search takes in a .adjlist file describing a graph and traverses it in a breadth-first way starting from a user-defined starting node. It starts at the starting node and traverses all neighbors before traversing all of the neighbor's neighbors (and so on). The code can also be used to find the shortest path between a start and end node. It will throw an error if the user-defined start/end nodes are not part of the given graph, or if the given graph is empty.
 
 # Getting Started
